@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { log } from "util";
 
 let Header = styled.header`
   position: fixed;
