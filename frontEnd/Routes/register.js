@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
+import { log } from "util";
 
 let Header = styled.header`
   position: fixed;
@@ -61,6 +62,10 @@ let Password = styled.div`
 `;
 
 let Email = styled.div`
+  direction: rtl;
+  margin: 50px 0;
+`;
+let Age = styled.div`
   direction: rtl;
   margin: 50px 0;
 `;
@@ -130,6 +135,45 @@ let Login = styled.a`
 class Register extends React.Component {
   constructor() {
     super();
+    this.state = {
+      name: "",
+      age: "",
+      email: "",
+      password: "",
+      kind: "user"
+    };
+  }
+
+  Name(name) {
+    this.setState({
+      name: name.target.value
+    });
+  }
+  Age(age) {
+    this.setState({
+      name: age.target.value
+    });
+  }
+  Email(email) {
+    this.setState({
+      name: email.target.value
+    });
+  }
+  Pass(pass) {
+    this.setState({
+      name: pass.target.value
+    });
+  }
+
+  Register() {
+    let data = {
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email,
+      password: this.state.password,
+      kind: this.state.kind
+    };
+    console.log(data);
   }
 
   render() {
@@ -153,17 +197,47 @@ class Register extends React.Component {
         <Section>
           <Name>
             <Text>اسم المستخدم</Text>
-            <Input type="text" placeholder="اسم المستخدم" />
+            <Input
+              onChange={event => {
+                this.Name(event);
+              }}
+              type="text"
+              placeholder="اسم المستخدم"
+            />
           </Name>
+          <Age>
+            <Text>العمر</Text>
+            <Input
+              onChange={event => {
+                this.Age(event);
+              }}
+              type="number"
+              placeholder="العمر"
+            />
+          </Age>
           <Email>
             <Text>البريد الالكتروني</Text>
-            <Input type="text" placeholder="البريد الالكتروني" />
+            <Input
+              onChange={event => {
+                this.Email(event);
+              }}
+              type="email"
+              id="emailField"
+              required
+              placeholder="البريد الالكتروني"
+            />
           </Email>
           <Password>
             <Text>رمز الدخول</Text>
-            <Input type="text" placeholder="رمز الدخول" />
+            <Input
+              onChange={event => {
+                this.Pass(event);
+              }}
+              type="password"
+              placeholder="رمز الدخول"
+            />
           </Password>
-          <Submit href="logged">تسجيل</Submit>
+          <Submit onClick={this.Register}>تسجيل</Submit>
         </Section>
       </div>
     );

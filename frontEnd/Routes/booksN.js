@@ -198,17 +198,17 @@ class BooksN extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch("https://book-shop-db.herokuapp.com/booksN")
-      .then(data => {
-        fetch(data.url).then(data2 => {
-          console.log(data2);
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  // componentDidMount() {
+  //   fetch("https://book-shop-db.herokuapp.com/booksN")
+  //     .then(data => {
+  //       fetch(data.url).then(data2 => {
+  //         console.log(data2);
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 
   render() {
     return (
