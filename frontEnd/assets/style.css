@@ -1,0 +1,35 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: jannaR;
+}
+#Body {
+  height: 100%;
+  width: 100%;
+}
+@font-face {
+  font-family: jannaR;
+  src: url(../fonts/JannaR.TTF);
+}
+@font-face {
+  font-family: jannaB;
+  src: url(../fonts/JannaB.TTF);
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
