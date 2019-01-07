@@ -125,6 +125,28 @@ let SignUp = styled.a`
 class Login extends React.Component {
   constructor() {
     super();
+    this.state = {
+      name: "",
+      password: ""
+    };
+  }
+
+  Name(name) {
+    this.setState({
+      name: name.target.value
+    });
+  }
+  Pass(pass) {
+    this.setState({
+      password: pass.target.value
+    });
+  }
+  Sign() {
+    let data = {
+      name: this.state.name,
+      password: this.state.password
+    };
+    console.log(data);
   }
 
   render() {
@@ -148,13 +170,27 @@ class Login extends React.Component {
         <Section>
           <Name>
             <Text>اسم المستخدم</Text>
-            <Input type="text" placeholder="اسم المستخدم" />
+            <Input
+              onChange={event => {
+                this.Name(event);
+              }}
+              type="text"
+              placeholder="اسم المستخدم"
+            />
           </Name>
           <Password>
             <Text>رمز الدخول</Text>
-            <Input type="text" placeholder="رمز الدخول" />
+            <Input
+              onChange={event => {
+                this.Pass(event);
+              }}
+              type="password"
+              placeholder="رمز الدخول"
+            />
           </Password>
-          <Submit href="logged">تسجيل</Submit>
+          <Submit href="logged" onClick={this.Sign.bind(this)}>
+            تسجيل
+          </Submit>
         </Section>
       </div>
     );
