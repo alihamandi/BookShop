@@ -7,6 +7,18 @@ const User = require("../models/user");
 
 router.use(express.json());
 
+router.get("/users", (req, res) => {
+  User.find((err, result) => {
+    if (result) {
+      res.send(result);
+    } else {
+      res.status(404).send("no books are available");
+    }
+  }).catch(err => {
+    res.status(404).send(err);
+  });
+});
+
 router.post("/register", (req, res) => {
   bcrypt.genSalt(10).then(salt => {
     bcrypt.hash(req.body.password, salt).then(hashed => {

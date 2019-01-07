@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 let Header = styled.header`
@@ -150,17 +149,17 @@ class Register extends React.Component {
   }
   Age(age) {
     this.setState({
-      name: age.target.value
+      age: age.target.value
     });
   }
   Email(email) {
     this.setState({
-      name: email.target.value
+      email: email.target.value
     });
   }
   Pass(pass) {
     this.setState({
-      name: pass.target.value
+      password: pass.target.value
     });
   }
 
@@ -236,7 +235,9 @@ class Register extends React.Component {
               placeholder="رمز الدخول"
             />
           </Password>
-          <Submit onClick={this.Register}>تسجيل</Submit>
+          <Submit href="logged" onClick={this.Register.bind(this)}>
+            تسجيل
+          </Submit>
         </Section>
       </div>
     );

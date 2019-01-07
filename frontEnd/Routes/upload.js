@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 let Header = styled.header`
@@ -113,6 +112,43 @@ let Div = styled.div`
 class Uplaod extends React.Component {
   constructor() {
     super();
+    this.state = {
+      title: "",
+      des: "",
+      cover: "",
+      dlink: ""
+    };
+  }
+
+  Title(title) {
+    this.setState({
+      title: title.target.value
+    });
+  }
+  Des(des) {
+    this.setState({
+      des: des.target.value
+    });
+  }
+  Cover(cover) {
+    this.setState({
+      cover: cover.target.value
+    });
+  }
+  Dlink(dlink) {
+    this.setState({
+      dlink: dlink.target.value
+    });
+  }
+
+  Upload() {
+    let data = {
+      title: this.state.title,
+      des: this.state.des,
+      cover: this.state.cover,
+      dlink: this.state.dlink
+    };
+    console.log(data);
   }
 
   render() {
@@ -135,21 +171,47 @@ class Uplaod extends React.Component {
         <Section>
           <Name>
             <Text>عنوان الكتاب</Text>
-            <Input type="text" placeholder="عنوان الكتاب" />
+            <Input
+              onChange={event => {
+                this.Title(event);
+              }}
+              type="text"
+              placeholder="عنوان الكتاب"
+            />
           </Name>
           <Name>
             <Text>الوصف</Text>
-            <Input type="text" placeholder="الوصف" />
+            <Input
+              onChange={event => {
+                this.Des(event);
+              }}
+              type="text"
+              placeholder="الوصف"
+            />
           </Name>
           <Photo>
             <Text>رابط صورة الغلاف</Text>
-            <Input type="text" placeholder="رابط صورة الغلاف" />
+            <Input
+              onChange={event => {
+                this.Cover(event);
+              }}
+              type="text"
+              placeholder="رابط صورة الغلاف"
+            />
           </Photo>
           <Download>
             <Text>رابط التحميل</Text>
-            <Input type="text" placeholder="رابط التحميل" />
+            <Input
+              onChange={event => {
+                this.Dlink(event);
+              }}
+              type="text"
+              placeholder="رابط التحميل"
+            />
           </Download>
-          <Submit href="books">رفع</Submit>
+          <Submit onClick={this.Upload.bind(this)} href="books">
+            رفع
+          </Submit>
         </Section>
       </div>
     );

@@ -198,17 +198,18 @@ class BooksN extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   fetch("https://book-shop-db.herokuapp.com/booksN")
-  //     .then(data => {
-  //       fetch(data.url).then(data2 => {
-  //         console.log(data2);
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+  componentDidMount() {
+    fetch("https://book-shop-db.herokuapp.com/booksN")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          list: data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (
@@ -239,7 +240,18 @@ class BooksN extends React.Component {
           </Router>
         </div>
         <Section>
-          <Card>
+          {this.state.list.map((item, i) => {
+            return (
+              <Card key={i}>
+                <Img width="200" height="200" src={item.cover} />
+                <Text>
+                  <Tilte>{item.title}</Tilte>
+                  <Des>{item.des}</Des>
+                </Text>
+              </Card>
+            );
+          })}
+          {/* <Card>
             <Img
               width="200"
               height="200"
@@ -253,7 +265,7 @@ class BooksN extends React.Component {
                 خهثىخهلى هثقىخلى رهثىقلى رهثقىفلى رهخعثىهعخ
               </Des>
             </Text>
-          </Card>
+          </Card> */}
         </Section>
       </div>
     );

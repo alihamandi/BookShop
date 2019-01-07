@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 let Header = styled.header`
@@ -193,6 +192,23 @@ let Home = styled.a`
 class Books extends React.Component {
   constructor() {
     super();
+    this.state = {
+      list: []
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://book-shop-db.herokuapp.com/booksN")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          list: data
+        });
+      })
+      .then(() => console.log(this.state.list))
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -225,7 +241,23 @@ class Books extends React.Component {
           </Router>
         </div>
         <Section>
-          <Card>
+          {this.state.list.map((item, i) => {
+            return (
+              <Card key={i}>
+                <Img width="200" height="200" src={item.cover} />
+                <Text>
+                  <Tilte>{item.title}</Tilte>
+                  <Des>{item.des}</Des>
+                </Text>
+                <Arrow>
+                  <a href={item.dlink}>
+                    <Img2 src={require("../assets/arr.svg")} alt="download" />
+                  </a>
+                </Arrow>
+              </Card>
+            );
+          })}
+          {/* <Card>
             <Img
               width="200"
               height="200"
@@ -242,7 +274,7 @@ class Books extends React.Component {
             <Arrow>
               <Img2 src={require("../assets/arr.svg")} alt="download" />
             </Arrow>
-          </Card>
+          </Card> */}
         </Section>
       </div>
     );
