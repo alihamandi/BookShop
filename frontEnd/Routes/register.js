@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import decode from "jwt-decode";
+import { request } from "http";
 
 let Header = styled.header`
   position: fixed;
@@ -164,14 +166,32 @@ class Register extends React.Component {
   }
 
   Register() {
-    let data = {
-      name: this.state.name,
-      age: this.state.age,
-      email: this.state.email,
-      password: this.state.password,
-      kind: this.state.kind
-    };
-    console.log(data);
+    // let data = {
+    //   name: this.state.name,
+    //   age: this.state.age,
+    //   email: this.state.email,
+    //   password: this.state.password,
+    //   kind: this.state.kind
+    // };
+    // console.log(data);
+
+    fetch("https://book-shop-db.herokuapp.com/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(response => response.json())
+      // .then(request => {
+      //   console.log(request.headers.token);
+      // })
+      .then(result => {
+        console.log(result);
+      })
+      .then(() => {
+        window.location.replace("login");
+      });
   }
 
   render() {
@@ -235,9 +255,7 @@ class Register extends React.Component {
               placeholder="رمز الدخول"
             />
           </Password>
-          <Submit href="logged" onClick={this.Register.bind(this)}>
-            تسجيل
-          </Submit>
+          <Submit onClick={this.Register.bind(this)}>تسجيل</Submit>
         </Section>
       </div>
     );

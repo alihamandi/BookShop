@@ -126,14 +126,14 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "",
+      email: "",
       password: ""
     };
   }
 
-  Name(name) {
+  Email(email) {
     this.setState({
-      name: name.target.value
+      email: email.target.value
     });
   }
   Pass(pass) {
@@ -142,11 +142,47 @@ class Login extends React.Component {
     });
   }
   Sign() {
-    let data = {
-      name: this.state.name,
-      password: this.state.password
-    };
-    console.log(data);
+    // let data = {
+    //   email: this.state.email,
+    //   password: this.state.password
+    // };
+    // var bearer = "Bearer " + bearer_token;
+    // console.log(data);
+    //   fetch("https://book-shop-db.herokuapp.com/login", {
+    //     method: "POST",
+    //     headers: {
+    //       token: getTokenFromStore(),
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(this.state)
+    //   })
+    //     .then(response => {
+    //       console.log(response.headers.token);
+    //     })
+    //     .then(result => {
+    //       console.log(result);
+    //     })
+    //     .then(() => {
+    //       // window.location.replace("logged");
+    //     });
+  }
+
+  // console.log(req.token);
+  //       localStorage.setItem("token", req.token);
+
+  checker() {
+    // Checks if there is a saved token and it's still valid
+    const token = this.getToken(); // GEtting token from localstorage
+    if (token) {
+      return "logged";
+    } else {
+      return "/";
+    }
+  }
+
+  getToken() {
+    // Retrieves the user token from localStorage
+    return localStorage.getItem("token");
   }
 
   render() {
@@ -169,13 +205,13 @@ class Login extends React.Component {
         </div>
         <Section>
           <Name>
-            <Text>اسم المستخدم</Text>
+            <Text>البريد الالكتروني</Text>
             <Input
               onChange={event => {
-                this.Name(event);
+                this.Email(event);
               }}
               type="text"
-              placeholder="اسم المستخدم"
+              placeholder="البريد الالكتروني"
             />
           </Name>
           <Password>
@@ -188,9 +224,7 @@ class Login extends React.Component {
               placeholder="رمز الدخول"
             />
           </Password>
-          <Submit href="logged" onClick={this.Sign.bind(this)}>
-            تسجيل
-          </Submit>
+          <Submit onClick={this.Sign.bind(this)}>دخول</Submit>
         </Section>
       </div>
     );
