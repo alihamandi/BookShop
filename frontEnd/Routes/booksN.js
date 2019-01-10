@@ -96,6 +96,7 @@ let Router = styled.div`
   top: 50px;
   right: 7%;
   margin: auto;
+  z-index: 90;
   animation: 0.75s ease-out 0s 1 slideInFromRight;
 `;
 

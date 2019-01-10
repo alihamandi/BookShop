@@ -142,13 +142,34 @@ class Uplaod extends React.Component {
   }
 
   Upload() {
-    let data = {
-      title: this.state.title,
-      des: this.state.des,
-      cover: this.state.cover,
-      dlink: this.state.dlink
-    };
-    console.log(data);
+    fetch("https://book-shop-db.herokuapp.com/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzJlOTFiYjhkNGM5YTcxYjQ4YWI1OWMiLCJpYXQiOjE1NDY1NTU5NDF9.A1WQD8DxA1GEZJCWm4_AQFHPWV4q7oWFFdtJddJqYYE"
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(response => {
+        if (this.state.title && this.state.cover && this.state.dlink) {
+          return response.json();
+        } else {
+          console.log("wrong entry");
+        }
+      })
+      // .then(request => {
+      //   console.log(request.headers.token);
+      // })
+      .then(result => {
+        console.log(result);
+        if (!result) {
+          console.log(result);
+        } else {
+          console.log("nothing wrong");
+          window.location.replace("books");
+        }
+      });
   }
 
   render() {
@@ -209,9 +230,7 @@ class Uplaod extends React.Component {
               placeholder="رابط التحميل"
             />
           </Download>
-          <Submit onClick={this.Upload.bind(this)} href="books">
-            رفع
-          </Submit>
+          <Submit onClick={this.Upload.bind(this)}>رفع</Submit>
         </Section>
       </div>
     );

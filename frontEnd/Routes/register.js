@@ -182,16 +182,28 @@ class Register extends React.Component {
       },
       body: JSON.stringify(this.state)
     })
-      .then(response => response.json())
+      .then(response => {
+        if (this.state.password) {
+          return response.json();
+        } else {
+          console.log("wrong password");
+        }
+      })
       // .then(request => {
       //   console.log(request.headers.token);
       // })
       .then(result => {
         console.log(result);
-      })
-      .then(() => {
-        window.location.replace("login");
+        if (!result) {
+          console.log(result);
+        } else {
+          console.log("nothing wrong");
+          window.location.replace("login");
+        }
       });
+    // .then(() => {
+    //   window.location.replace("login");
+    // });
   }
 
   render() {
