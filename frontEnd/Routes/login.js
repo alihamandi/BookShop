@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+const axios = require('axios')
 
 let Header = styled.header`
   position: fixed;
@@ -142,29 +143,18 @@ class Login extends React.Component {
     });
   }
   Sign() {
-    // let data = {
-    //   email: this.state.email,
-    //   password: this.state.password
-    // };
-    // var bearer = "Bearer " + bearer_token;
-    // console.log(data);
-    //   fetch("https://book-shop-db.herokuapp.com/login", {
-    //     method: "POST",
-    //     headers: {
-    //       token: getTokenFromStore(),
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(this.state)
-    //   })
-    //     .then(response => {
-    //       console.log(response.headers.token);
-    //     })
-    //     .then(result => {
-    //       console.log(result);
-    //     })
-    //     .then(() => {
-    //       // window.location.replace("logged");
-    //     });
+
+    axios.post('https://book-shop-db.herokuapp.com/login', {
+      email: this.state.email,
+      password: this.state.password
+    }).then((res) => {
+      console.log(res);
+      localStorage.setItem("token", res.data.token);
+      window.location.replace(this.checker());
+    }).catch((err) => {
+      console.log(err);
+
+    })
   }
 
   // console.log(req.token);
@@ -222,6 +212,16 @@ class Login extends React.Component {
               }}
               type="password"
               placeholder="رمز الدخول"
+
+              onKeyPress={(event) => {
+                if (event.key == "Enter") {
+                  this.Sign()
+                } else {
+                  console.log("typing");
+
+                }
+
+              }}
             />
           </Password>
           <Submit onClick={this.Sign.bind(this)}>دخول</Submit>

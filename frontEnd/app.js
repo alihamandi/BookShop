@@ -18,10 +18,10 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Main} />
+          <Route exact path="/" component={localStorage.getItem("token") ? Logged : Main} />
           <Route path="/booksN" component={BooksN} />
-          <Route path="/books" component={Books} />
-          <Route path="/upload" component={Upload} />
+          <Route path="/books" component={localStorage.getItem("token") ? Books : BooksN} />
+          <Route path="/upload" component={localStorage.getItem("token") ? Upload : Main} />
           <Route path="/register" component={Register} />
           <Route path="/logged" component={Logged} />
           <Route path="/login" component={Login} />

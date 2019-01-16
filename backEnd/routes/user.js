@@ -52,9 +52,9 @@ router.post("/login", (req, res) => {
       ) {
         if (response) {
           let done = logged(result._id);
-          res.header({ token: done }).send("you are logged in ");
+        res.send({text:"you are logged in " ,  token: done });
         } else {
-          res.status(404).send("there is no such user try to register first");
+          res.status(400).send("there is no such user try to register first");
         }
       });
     })
