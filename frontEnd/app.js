@@ -23,7 +23,7 @@ class App extends React.Component {
           <Route path="/books" component={localStorage.getItem("token") ? Books : BooksN} />
           <Route path="/upload" component={localStorage.getItem("token") ? Upload : Main} />
           <Route path="/register" component={Register} />
-          <Route path="/logged" component={Logged} />
+          <Route path="/logged" component={localStorage.getItem("token") ? Logged : Main} />
           <Route path="/login" component={Login} />
         </div>
       </Router>

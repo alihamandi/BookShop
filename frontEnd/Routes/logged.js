@@ -118,6 +118,22 @@ let Books = styled.a`
   }
 `;
 
+let Logout = styled.a`
+  color: #b7b7b7;
+  margin-right: 25px;
+  padding: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  &:hover {
+    color: #353a85;
+  }
+  &:active {
+    position: relative;
+    bottom: -2px;
+    right: 2px;
+  }
+`;
+
 let Div = styled.div`
   display: flex;
   align-item: center;
@@ -142,6 +158,10 @@ class Logged extends React.Component {
                 alt="the logo"
               />
             </Logo>
+            <Logout onClick={() => {
+              localStorage.clear();
+              window.location.replace("");
+            }} >تسجيل الخروج</Logout>
           </Header>
           <Router>
             <Route>
