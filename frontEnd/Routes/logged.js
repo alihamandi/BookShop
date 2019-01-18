@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 let Header = styled.header`
   position: fixed;
@@ -23,36 +24,13 @@ let Logo = styled.div`
   margin-top: 0.75%;
 `;
 
-let Router = styled.div`
+let TheRouter = styled.div`
   display: flex;
   position: fixed;
   top: 75px;
   right: 7%;
   margin: auto;
   animation: 0.75s ease-out 0s 1 slideInFromRight;
-`;
-
-let Route = styled.a`
-  width: 100px;
-  height: 70px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  text-align: center;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  margin-right: 18px;
-  transition: transform 300ms ease;
-  text-decoration: none;
-  &:hover {
-    transform: translate(0, 70%);
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
 `;
 
 let P = styled.p`
@@ -97,43 +75,6 @@ let Line = styled.div`
   animation: 0.75s ease-out 0s 1 slideInFromRight;
 `;
 
-let Books = styled.a`
-  width: 50px;
-  height: 40px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  align-text: center;
-  padding: 4px 30px 5px 30px;
-  border-radius: 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-
-let Logout = styled.a`
-  color: #b7b7b7;
-  margin-right: 25px;
-  padding: 5px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  &:hover {
-    color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-
 let Div = styled.div`
   display: flex;
   align-item: center;
@@ -158,22 +99,29 @@ class Logged extends React.Component {
                 alt="the logo"
               />
             </Logo>
-            <Logout onClick={() => {
-              localStorage.clear();
-              window.location.replace("");
-            }} >تسجيل الخروج</Logout>
+            <Link
+              className="logout"
+              to="/"
+              onClick={() => {
+                localStorage.clear().then(() => {
+                  this.props.history.push("/");
+                });
+              }}
+            >
+              تسجيل الخروج
+            </Link>
           </Header>
-          <Router>
-            <Route>
+          <TheRouter>
+            <Link className="link" to="/">
               <P>تواصل معنا</P>
-            </Route>
-            <Route>
+            </Link>
+            <Link className="link" to="/">
               <P>عن الموقع</P>
-            </Route>
-            <Route href="books">
+            </Link>
+            <Link className="link" to="/books">
               <P>الكتب</P>
-            </Route>
-          </Router>
+            </Link>
+          </TheRouter>
         </div>
         <PageDiv>
           <div>
@@ -181,7 +129,9 @@ class Logged extends React.Component {
               اختر الكتب التي تناسبك .....
               <Line />
               <Div>
-                <Books href="books">الكتب</Books>
+                <Link className="books" to="/books">
+                  الكتب
+                </Link>
               </Div>
             </P2>
           </div>

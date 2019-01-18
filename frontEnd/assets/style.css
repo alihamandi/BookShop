@@ -47,3 +47,244 @@
     transform: translateX(0);
   }
 }
+
+.link {
+  width: 100px;
+  height: 70px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #36a64f;
+  text-align: center;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  margin-right: 18px;
+  transition: transform 300ms ease;
+  text-decoration: none;
+}
+
+.link:hover {
+  transform: translate(0, 70%);
+  background-color: #353a85;
+}
+
+.link:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.this-link {
+  width: 100px;
+  height: 70px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #36a64f;
+  text-align: center;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  margin-right: 18px;
+  margin-top: 50px;
+  text-decoration: none;
+}
+.this-link:hover {
+  background-color: #353a85;
+}
+.this-link:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.home {
+  color: #b7b7b7;
+  margin-right: 25px;
+  padding: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+.home:hover {
+  color: #353a85;
+}
+.home:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.uplaod {
+  height: 40px;
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  background-color: #36a64f;
+  padding: 4px 30px 5px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  text-decoration: none;
+}
+
+.uplaod:hover {
+  background-color: #353a85;
+}
+.uplaod:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.books {
+  width: 50px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #36a64f;
+  text-align: center;
+  padding: 4px 30px 5px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  text-decoration: none;
+}
+
+.books:hover {
+  background-color: #353a85;
+}
+.books:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.signup {
+  width: 50px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #36a64f;
+  text-align: center;
+  padding: 4px 30px 5px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  text-decoration: none;
+}
+
+.signup:hover {
+  background-color: #353a85;
+}
+.signup:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.login {
+  color: #b7b7b7;
+  margin-right: 25px;
+  padding: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.login:hover {
+  color: #353a85;
+}
+.login:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.this-home {
+  height: 40px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #36a64f;
+  text-align: center;
+  padding: 4px 30px 5px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  text-decoration: none;
+}
+
+.this-home:hover {
+  background-color: #353a85;
+}
+.this-home:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.this-signup {
+  color: #b7b7b7;
+  margin-right: 25px;
+  padding: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.this-signup:hover {
+  color: #353a85;
+}
+.this-signup:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.submit {
+  margin: 40%;
+  height: 40px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #36a64f;
+  text-align: center;
+  padding: 4px 30px 5px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  text-decoration: none;
+}
+.submit:hover {
+  background-color: #353a85;
+}
+.submit:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+.logout {
+  color: #b7b7b7;
+  margin-right: 25px;
+  padding: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+.logout:hover {
+  color: #353a85;
+}
+.logout:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}
+
+.books-upload {
+  width: 25px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #36a64f;
+  text-align: center;
+  padding: 4px 30px 5px 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
+  text-decoration: none;
+}
+
+.books-upload:hover {
+  background-color: #353a85;
+}
+.books-upload:active {
+  position: relative;
+  bottom: -2px;
+  right: 2px;
+}

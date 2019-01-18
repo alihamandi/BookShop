@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 let Header = styled.header`
   position: fixed;
@@ -68,29 +69,7 @@ let Text = styled.div`
   position: relative;
 `;
 
-let Arrow = styled.div`
-  background-color: #36a64f;
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  margin: auto;
-  margin-left: 20px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-let Img2 = styled.img`
-  padding: 10px;
-  height: 30px;
-  width: 30px;
-`;
-let Router = styled.div`
+let TheRouter = styled.div`
   display: flex;
   position: fixed;
   top: 50px;
@@ -100,95 +79,15 @@ let Router = styled.div`
   animation: 0.75s ease-out 0s 1 slideInFromRight;
 `;
 
-let Route = styled.a`
-  width: 100px;
-  height: 70px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  text-align: center;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  margin-right: 18px;
-  transition: transform 300ms ease;
-  text-decoration: none;
-  &:hover {
-    transform: translate(0, 70%);
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-
-let ThisRoute = styled.a`
-  width: 100px;
-  height: 70px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  text-align: center;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  margin-right: 18px;
-  margin-top: 50px;
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-
 let P = styled.p`
   padding-top: 10px;
 `;
 
-let Upload = styled.a`
-  height: 40px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  align-text: center;
-  padding: 4px 30px 5px 30px;
-  border-radius: 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
 let Div = styled.div`
   display: flex;
   align-item: center;
   align-text: center;
   margin-right: 8%;
-`;
-
-let Home = styled.a`
-  color: #b7b7b7;
-  margin-right: 25px;
-  padding: 5px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  &:hover {
-    color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
 `;
 
 class BooksN extends React.Component {
@@ -225,20 +124,22 @@ class BooksN extends React.Component {
               />
             </Logo>
             <Div>
-              <Home href="/">الصفحة الرئيسية</Home>
+              <Link className="home" to="/">
+                ألصفحة الرئيسية
+              </Link>
             </Div>
           </Header>
-          <Router>
-            <Route>
+          <TheRouter>
+            <Link className="link" to="/booksN">
               <P>تواصل معنا</P>
-            </Route>
-            <Route>
+            </Link>
+            <Link className="link" to="/booksN">
               <P>عن الموقع</P>
-            </Route>
-            <ThisRoute href="booksN">
+            </Link>
+            <Link className="this-link" to="/booksN">
               <P>الكتب</P>
-            </ThisRoute>
-          </Router>
+            </Link>
+          </TheRouter>
         </div>
         <Section>
           {this.state.list.map((item, i) => {
@@ -252,21 +153,6 @@ class BooksN extends React.Component {
               </Card>
             );
           })}
-          {/* <Card>
-            <Img
-              width="200"
-              height="200"
-              src="https://dhad.sa/wp-content/uploads/2016/05/091.png"
-            />
-            <Text>
-              <Tilte>مهزلة العقل البشري</Tilte>
-              <Des>
-                نلاابهللارتى لاتقف لاقففلا لابللاهتفىهعلاف ثىهخىللهعلا
-                هنيىبرخهىثقهخع هيىهب لخهعثارهعىثهق رهثهعخلفاهخيبىرخهثقالنى
-                خهثىخهلى هثقىخلى رهثىقلى رهثقىفلى رهخعثىهعخ
-              </Des>
-            </Text>
-          </Card> */}
         </Section>
       </div>
     );

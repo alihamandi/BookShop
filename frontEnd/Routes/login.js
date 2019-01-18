@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-const axios = require('axios')
+const axios = require("axios");
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 let Header = styled.header`
   position: fixed;
@@ -60,67 +61,11 @@ let Password = styled.div`
   margin: 50px 0;
 `;
 
-let Home = styled.a`
-  height: 40px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  align-text: center;
-  padding: 4px 30px 5px 30px;
-  border-radius: 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
 let Div = styled.div`
   display: flex;
   align-item: center;
   align-text: center;
   margin-right: 8%;
-`;
-
-let Submit = styled.a`
-  margin: 40%;
-  height: 40px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  align-text: center;
-  padding: 4px 30px 5px 30px;
-  border-radius: 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-
-let SignUp = styled.a`
-  color: #b7b7b7;
-  margin-right: 25px;
-  padding: 5px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  &:hover {
-    color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
 `;
 
 class Login extends React.Component {
@@ -143,36 +88,19 @@ class Login extends React.Component {
     });
   }
   Sign() {
-
-    axios.post('https://book-shop-db.herokuapp.com/login', {
-      email: this.state.email,
-      password: this.state.password
-    }).then((res) => {
-      console.log(res);
-      localStorage.setItem("token", res.data.token);
-      window.location.replace(this.checker());
-    }).catch((err) => {
-      console.log(err);
-
-    })
-  }
-
-  // console.log(req.token);
-  //       localStorage.setItem("token", req.token);
-
-  checker() {
-    // Checks if there is a saved token and it's still valid
-    const token = this.getToken(); // GEtting token from localstorage
-    if (token) {
-      return "logged";
-    } else {
-      return "/";
-    }
-  }
-
-  getToken() {
-    // Retrieves the user token from localStorage
-    return localStorage.getItem("token");
+    axios
+      .post("https://book-shop-db.herokuapp.com/login", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        this.props.history.push("/logged");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -188,8 +116,12 @@ class Login extends React.Component {
               />
             </Logo>
             <Div>
-              <SignUp href="register">تسجيل</SignUp>
-              <Home href="/">الصفحة الرئيسية</Home>
+              <Link className="this-signup" to="/register">
+                تسجيل
+              </Link>
+              <Link className="this-home" to="/">
+                الصفحة الرئيسية
+              </Link>
             </Div>
           </Header>
         </div>
@@ -212,19 +144,18 @@ class Login extends React.Component {
               }}
               type="password"
               placeholder="رمز الدخول"
-
-              onKeyPress={(event) => {
+              onKeyPress={event => {
                 if (event.key == "Enter") {
-                  this.Sign()
+                  this.Sign();
                 } else {
                   console.log("typing");
-
                 }
-
               }}
             />
           </Password>
-          <Submit onClick={this.Sign.bind(this)}>دخول</Submit>
+          <Link className="submit" to="/login" onClick={this.Sign.bind(this)}>
+            دخول
+          </Link>
         </Section>
       </div>
     );

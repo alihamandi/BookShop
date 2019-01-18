@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import decode from "jwt-decode";
-import { request } from "http";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 let Header = styled.header`
   position: fixed;
@@ -70,66 +69,11 @@ let Age = styled.div`
   margin: 50px 0;
 `;
 
-let Home = styled.a`
-  height: 40px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  align-text: center;
-  padding: 4px 30px 5px 30px;
-  border-radius: 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
 let Div = styled.div`
   display: flex;
   align-item: center;
   align-text: center;
   margin-right: 8%;
-`;
-
-let Submit = styled.a`
-  margin: 40%;
-  height: 40px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  align-text: center;
-  padding: 4px 30px 5px 30px;
-  border-radius: 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-let Login = styled.a`
-  color: #b7b7b7;
-  margin-right: 25px;
-  padding: 5px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  &:hover {
-    color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
 `;
 
 class Register extends React.Component {
@@ -198,7 +142,6 @@ class Register extends React.Component {
           console.log(result);
         } else {
           console.log("nothing wrong");
-          window.location.replace("login");
         }
       });
     // .then(() => {
@@ -219,8 +162,12 @@ class Register extends React.Component {
               />
             </Logo>
             <Div>
-              <Login href="login">تسجيل الدخول</Login>
-              <Home href="/">الصفحة الرئيسية</Home>
+              <Link className="this-signup" to="/login">
+                تسجيل الدخول
+              </Link>
+              <Link className="this-home" to="/">
+                الصفحة الرئيسية
+              </Link>
             </Div>
           </Header>
         </div>
@@ -267,7 +214,13 @@ class Register extends React.Component {
               placeholder="رمز الدخول"
             />
           </Password>
-          <Submit onClick={this.Register.bind(this)}>تسجيل</Submit>
+          <Link
+            className="submit"
+            to="/login"
+            onClick={this.Register.bind(this)}
+          >
+            تسجيل
+          </Link>
         </Section>
       </div>
     );

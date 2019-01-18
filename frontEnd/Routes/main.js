@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 let Header = styled.header`
   position: fixed;
@@ -23,43 +24,6 @@ let Logo = styled.div`
   margin-top: 0.75%;
 `;
 
-let SingUp = styled.a`
-  width: 50px;
-  height: 40px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  align-text: center;
-  padding: 4px 30px 5px 30px;
-  border-radius: 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  &:hover {
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-
-let Login = styled.a`
-  color: #b7b7b7;
-  margin-right: 25px;
-  padding: 5px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  &:hover {
-    color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
-`;
-
 let SignDiv = styled.div`
   display: flex;
   align-item: center;
@@ -73,36 +37,13 @@ let SignDiv2 = styled.div`
   margin-top: 8%;
 `;
 
-let Router = styled.div`
+let TheRouter = styled.div`
   display: flex;
   position: fixed;
   top: 75px;
   right: 7%;
   margin: auto;
   animation: 0.75s ease-out 0s 1 slideInFromRight;
-`;
-
-let Route = styled.a`
-  width: 100px;
-  height: 70px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #36a64f;
-  text-align: center;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.16);
-  margin-right: 18px;
-  transition: transform 300ms ease;
-  text-decoration: none;
-  &:hover {
-    transform: translate(0, 70%);
-    background-color: #353a85;
-  }
-  &:active {
-    position: relative;
-    bottom: -2px;
-    right: 2px;
-  }
 `;
 
 let P = styled.p`
@@ -165,21 +106,25 @@ class Main extends React.Component {
               />
             </Logo>
             <SignDiv>
-              <Login href="login">تسجيل الدخول</Login>
-              <SingUp href="register">تسجيل</SingUp>
+              <Link className="login" to="/login">
+                تسجيل الدخول
+              </Link>
+              <Link className="signup" to="/register">
+                تسجيل
+              </Link>
             </SignDiv>
           </Header>
-          <Router>
-            <Route>
+          <TheRouter>
+            <Link className="link" to="/">
               <P>تواصل معنا</P>
-            </Route>
-            <Route>
+            </Link>
+            <Link className="link" to="/">
               <P>عن الموقع</P>
-            </Route>
-            <Route href="booksN">
+            </Link>
+            <Link className="link" to="/booksN">
               <P>الكتب</P>
-            </Route>
-          </Router>
+            </Link>
+          </TheRouter>
         </div>
         <PageDiv>
           <div>
@@ -187,8 +132,12 @@ class Main extends React.Component {
               اختر الكتب التي تناسبك .....
               <Line />
               <SignDiv2>
-                <SingUp href="register">تسجيل</SingUp>
-                <Login href="login">تسجيل الدخول</Login>
+                <Link className="signup" to="/register">
+                  تسجيل
+                </Link>
+                <Link className="login" to="/login">
+                  تسجيل الدخول
+                </Link>
               </SignDiv2>
             </P2>
           </div>
